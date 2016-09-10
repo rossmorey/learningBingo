@@ -26,6 +26,7 @@ Learning Bingo will be a single screen application.  It will include buttons for
   - "Tile", there will be 25 of these selectable tiles
   - "Restart Game"
   - "Play Again"
+
 The application will also include a list of nav links to the Github, and my LinkedIn.  
 
 ![wireframes](https://github.com/rossmorey/learningBingo/blob/master/docs/wireframes/Bingo.png)
@@ -58,15 +59,15 @@ There will be an `entry.js` file in addition to:
   - Outline all major game functions.
   - Create static question/answer data.
 
-**Day 2**: Render the entire game page including board with data filled in.  Install click handlers on each tile element that create an alert with the tile's id number.
+**Day 2**: Render the entire game page including board with data filled in.  Install click handlers on each tile element that creates an alert with the tile's id number.
   - Render title, nav, start button
-  - render filled board on start click
-  - install click handlers on each tile and write response function.
+  - Render filled board on start click
+  - Install click handlers on each tile and write response function.
 
 **Day 3**: Write the game's basic logic components. This includes functions like:
-  - play loop
-  - gameWon?
-  - checkGuess
+  - `play` loop
+  - `gameWon`
+  - `checkGuess`
 
 By the end of the day, I should have a roughly playable game.
 
@@ -79,8 +80,8 @@ By the end of the day, I should have a roughly playable game.
 
 I'd like to theme Learning Bingo around the reading concept of blending, i.e. combining phoneme sounds.  Using images and audio prompts, the game will say, "Do you have a tile that says C - A - T?"  The user would select the picture of a cat.
 
-![bus](https://github.com/rossmorey/learningBingo/blob/master/docs/wireframes/images/BUS.png)
 ![jam](https://github.com/rossmorey/learningBingo/blob/master/docs/wireframes/images/JAM.png)
+![bus](https://github.com/rossmorey/learningBingo/blob/master/docs/wireframes/images/BUS.png)
 ![doll](https://github.com/rossmorey/learningBingo/blob/master/docs/wireframes/images/DOLL.png)
 
 Features I'd like to implement:
