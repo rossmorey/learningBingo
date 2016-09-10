@@ -79,9 +79,9 @@ By the end of the day, I should have a roughly playable game.
 
 I'd like to theme Learning Bingo around the reading concept of blending, i.e. combining phoneme sounds.  Using images and audio prompts, the game will say, "Do you have a tile that says C - A - T?"  The user would select the picture of a cat.
 
-![bus](https://github.com/rossmorey/learningBingo/blob/master/docs/wireframes/images/bus.png)
-![jam](https://github.com/rossmorey/learningBingo/blob/master/docs/wireframes/images/jam.png)
-![doll](https://github.com/rossmorey/learningBingo/blob/master/docs/wireframes/images/doll.png)
+![bus](https://github.com/rossmorey/learningBingo/blob/master/docs/wireframes/images/BUS.png)
+![jam](https://github.com/rossmorey/learningBingo/blob/master/docs/wireframes/images/JAM.png)
+![doll](https://github.com/rossmorey/learningBingo/blob/master/docs/wireframes/images/DOLL.png)
 
 Features I'd like to implement:
 
