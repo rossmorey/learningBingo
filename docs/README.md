@@ -28,7 +28,7 @@ Learning Bingo will be a single screen application.  It will include buttons for
   - "Play Again"
 The application will also include a list of nav links to the Github, and my LinkedIn.  
 
-![wireframes](https://github.com/appacademy/job-search-curriculum/blob/master/job-search-projects/images/js_wireframe.jpeg)
+![wireframes](https://github.com/rossmorey/learningBingo/blob/master/docs/wireframes/Bingo.png)
 
 ### Architecture and Technologies
 
@@ -59,28 +59,29 @@ There will be an `entry.js` file in addition to:
   - Create static question/answer data.
 
 **Day 2**: Render the entire game page including board with data filled in.  Install click handlers on each tile element that create an alert with the tile's id number.
-  -
-  -
-  -
+  - Render title, nav, start button
+  - render filled board on start click
+  - install click handlers on each tile and write response function.
 
-**Day 3**: Create the automata logic backend.  Build out modular functions for handling the different grid types along with their unique neighbor checks and rule sets.  Incorporate the automata logic into the `Board.js` rendering.  Goals for the day:
+**Day 3**: Write the game's basic logic components. This includes functions like:
+  - play loop
+  - gameWon?
+  - checkGuess
 
-- Export an `Automata` object with correct type and handling logic
-- Have a functional grid on the `Canvas` frontend that correctly handles iterations from one generation of the game to the next
+By the end of the day, I should have a roughly playable game.
 
+**Day 4**: Create styling, including kid-friendly interface.  Should look polished and professional -- could be used in a classroom.
 
-**Day 4**: Install the controls for the user to interact with the game.  Style the frontend, making it polished and professional.  Goals for the day:
-
-- Create controls for game speed, stop, start, reset, and shape type
-- Have a styled `Canvas`, nice looking controls and title
-- If time: include buttons on the side to toggle the color scheme of the cells
-
+- Style buttons, interactive/clickable elements, professional-looking font.
+- If time: tackle the bonuses (see below)
 
 ### Bonus features
 
 I'd like to theme Learning Bingo around the reading concept of blending, i.e. combining phoneme sounds.  Using images and audio prompts, the game will say, "Do you have a tile that says C - A - T?"  The user would select the picture of a cat.
 
-![wireframes](https://github.com/appacademy/job-search-curriculum/blob/master/job-search-projects/images/js_wireframe.jpeg)
+![bus](https://github.com/rossmorey/learningBingo/blob/master/docs/wireframes/bus.png)
+![jam](https://github.com/rossmorey/learningBingo/blob/master/docs/wireframes/jam.png)
+![doll](https://github.com/rossmorey/learningBingo/blob/master/docs/wireframes/doll.png)
 
 Features I'd like to implement:
 
