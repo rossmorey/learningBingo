@@ -1,0 +1,79 @@
+CONSTANTS
+-list of tiles
+-list of questions
+
+Page loads
+  title
+  start button
+  nav links
+  25 empty tiles
+    <table>
+      <tr>
+        <td id="1"></td>
+        <td id="2"></td>
+        <td id="3"></td>
+        <td id="4"></td>
+        <td id="5"></td>
+      </tr>
+      <tr>
+        <td id="6"></td>
+        <td id="7"></td>
+        <td id="8"></td>
+        <td id="9"></td>
+        <td id="10"></td>
+      </tr>
+      ...
+    </table>
+
+User clicks start
+  board is generated
+    25 unique tile objects in random order in a board object
+      board = {
+        1: {value=3},
+        2: {value=5}
+        ...
+      }
+  questions are shuffled
+  board is displayed
+    iterate through the board:
+     change value of each td
+     install click handler on each tile
+  first question is asked
+  display pass button (if game is active)
+
+User selects a tile
+  click handler is triggered
+  check if correct
+    no -- display error
+    yes --
+      check if won
+        yes -- congratulations
+        no --
+          turn card
+          remove the question
+          next question
+
+User selects Pass
+  next question
+
+User selects Restart  
+  game resets
+
+JavaScript
+jQuery
+webpack
+
+SETUP ASSETS
+tiles
+questions
+
+game logic
+assets
+  tiles
+  questions
+remote ASSETS
+  pictures (cloudinary)
+  audio (aws or soundcloud)
+entry
+index
+style
