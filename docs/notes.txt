@@ -27,7 +27,10 @@ Page loads
 
 User clicks start
   board is generated
-    25 unique tile objects in random order in a board object
+  game generates
+    question array = [{question, key}, {question, key}, ...]
+    <li id="2">answer[2]</li>
+
       board = {
         1: {value=3},
         2: {value=5}
@@ -56,7 +59,7 @@ User selects a tile
 User selects Pass
   next question
 
-User selects Restart  
+User selects Restart
   game resets
 
 JavaScript
@@ -77,3 +80,8 @@ remote ASSETS
 entry
 index
 style
+
+
+
+
+m%5 +j === 0
