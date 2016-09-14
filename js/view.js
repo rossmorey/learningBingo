@@ -135,7 +135,7 @@ class BingoView {
 
     let $audioQuestion = this.$el.find('audio');
     // source below should be question audio:
-    $audioQuestion.attr('src', "./beep.mp3");
+    $audioQuestion.attr('src', this.game.currentQuestion().question);
 
     const $lis = this.$el.find('li');
 
