@@ -218,6 +218,10 @@
 	    this.setupBoard();
 	  }
 
+	  playAudio() {
+	    $('audio').trigger("play");
+	  }
+
 	  clickStart() {
 	    this.$el.on(
 	      "click",
@@ -273,22 +277,35 @@
 	  setupBoard() {
 	    this.$el.empty();
 
-	    let $title = $('<header class="title" />');
-	    $title.text("Learning Bingo");
+	    let $title = $('<div class="title" />');
+	    $title.text("Blending Bingo");
 
 	    let $messageBox = $('<div class="message-box">');
 	    let $start = $('<div class="start">');
 	    $start.text("Start");
-	    $messageBox.append($start);
 
 	    let $question = $('<div class="question">');
+	    let $audioQuestion = $('<audio class="audio-question">');
+	    let $replay = $('<div class="replay invisible">').text('Replay Question');
+
+	    this.$el.on(
+	      "click",
+	      ".replay",
+	      this.playAudio.bind(this)
+	    );
+
 	    let $board = $('<ul>');
-	    let $tile;
+	    let $tile, $image;
 
 	    for (var tileIdx = 0; tileIdx < 25; tileIdx++) {
 	      $tile = $('<li>');
 	      $tile.addClass("tokenless noclick");
-	      $tile.text(this.game.shuffledAnswers[tileIdx].answer);
+	      $image = $('<img>').attr(
+	        "src",
+	        this.game.shuffledAnswers[tileIdx].answer
+	      );
+	      $tile.append($image);
+
 	      $board.append($tile);
 	    }
 
@@ -311,14 +328,24 @@
 	      this.clickPass.bind(this)
 	    );
 
-	    this.$el.append($title, $messageBox, $question, $board, $buttonBox);
+	    let $copyright = $('<div class="copyright">').html(
+	      "Bay Tree Learing Inc. &copy; 2016<br />All rights reserved."
+	    );
+
+	    this.$el.append($audioQuestion, $title, $start, $replay, $messageBox, $board, $buttonBox, $question, $copyright);
 	  }
 
 	  render() {
 	    this.$el.find('.start').remove();
 	    this.$el.find('.error').remove();
 
+	    let $audioQuestion = this.$el.find('audio');
+	    // source below should be question audio:
+	    $audioQuestion.attr('src', "./beep.mp3");
+
 	    const $lis = this.$el.find('li');
+
+	    let image;
 
 	    this.game.shuffledAnswers.forEach((answer, answerIdx) => {
 	      let current = $lis[answerIdx];
@@ -326,6 +353,11 @@
 
 	      if (this.game.shuffledAnswers[answerIdx].key === "token") {
 	        $(current).addClass("token");
+	        image = $(current).children()[0];
+	        $(image).attr(
+	          "src",
+	          "http://res.cloudinary.com/dhorsi7vf/image/upload/c_scale,w_120/v1473790535/back_g11vin.png"
+	        );
 	      } else {
 	        $(current).addClass("tokenless");
 	      }
@@ -334,7 +366,11 @@
 	    const $question = this.$el.find('.question');
 	    $question.text(this.game.currentQuestion().question);
 
+
+
 	    this.$el.find('.button-box').removeClass('invisible');
+	    this.$el.find('.replay').removeClass('invisible');
+	    $audioQuestion.trigger("play");
 	  }
 	}
 
@@ -346,31 +382,31 @@
 /***/ function(module, exports) {
 
 	const questions = {
-	  1 : "Do you have any tiles that equal 3 - 2?",
-	  2 : "Do you have any tiles that equal 1 + 1?",
-	  3 : "Do you have any tiles that equal 6 - 3?",
-	  4 : "Do you have any tiles that equal 1 + 3?",
-	  5 : "Do you have any tiles that equal 2 + 3?",
-	  6 : "Do you have any tiles that equal 3 + 3?",
-	  7 : "Do you have any tiles that equal 3 + 4?",
-	  8 : "Do you have any tiles that equal 4 + 4?",
-	  9 : "Do you have any tiles that equal 5 + 4?",
-	  10 : "Do you have any tiles that equal 2 + 8?",
-	  11 : "Do you have any tiles that equal 1 + 10?",
-	  12 : "Do you have any tiles that equal 12 + 0?",
-	  13 : "Do you have any tiles that equal 10 + 3?",
-	  14 : "Do you have any tiles that equal 12 + 2?",
-	  15 : "Do you have any tiles that equal 12 + 3?",
-	  16 : "Do you have any tiles that equal 14 + 2?",
-	  17 : "Do you have any tiles that equal 7 + 10?",
-	  18 : "Do you have any tiles that equal 4 + 14?",
-	  19 : "Do you have any tiles that equal 3 + 16?",
-	  20 : "Do you have any tiles that equal 7 + 13?",
-	  21 : "Do you have any tiles that equal 4 + 17?",
-	  22 : "Do you have any tiles that equal 6 + 16?",
-	  23 : "Do you have any tiles that equal 3 + 20?",
-	  24 : "Do you have any tiles that equal 15 + 9?",
-	  25 : "Do you have any tiles that equal 5 + 20?"
+	  1 : "T-O-P",
+	  2 : "T-E-N",
+	  3 : "P-O-T",
+	  4 : "P-I-N",
+	  5 : "P-I-G",
+	  6 : "P-E-N",
+	  7 : "P-A-N",
+	  8 : "K-I-S-S",
+	  9 : "J-E-T",
+	  10 : "J-A-M",
+	  11 : "G-U-M",
+	  12 : "D-O-L-L",
+	  13 : "D-O-G",
+	  14 : "D-A-D",
+	  15 : "C-A-T",
+	  16 : "C-A-N",
+	  17 : "B-U-S",
+	  18 : "B-U-N",
+	  19 : "B-U-G",
+	  20 : "B-I-B",
+	  21 : "B-E-L-L",
+	  22 : "B-E-D",
+	  23 : "B-A-T",
+	  24 : "B-A-G",
+	  25 : "S-U-B"
 	};
 
 	module.exports = questions;
@@ -381,31 +417,31 @@
 /***/ function(module, exports) {
 
 	const answers = {
-	  1 : 1,
-	  2 : 2,
-	  3 : 3,
-	  4 : 4,
-	  5 : 5,
-	  6 : 6,
-	  7 : 7,
-	  8 : 8,
-	  9 : 9,
-	  10 : 10,
-	  11 : 11,
-	  12 : 12,
-	  13 : 13,
-	  14 : 14,
-	  15 : 15,
-	  16 : 16,
-	  17 : 17,
-	  18 : 18,
-	  19 : 19,
-	  20 : 20,
-	  21 : 21,
-	  22 : 22,
-	  23 : 23,
-	  24 : 24,
-	  25 : 25
+	  1 : "http://res.cloudinary.com/dhorsi7vf/image/upload/c_scale,w_120/v1473787891/top_q56ktj.png",
+	  2 : "http://res.cloudinary.com/dhorsi7vf/image/upload/c_scale,w_120/v1473787887/ten_euz640.png",
+	  3 : "http://res.cloudinary.com/dhorsi7vf/image/upload/c_scale,w_120/v1473787883/pot_kyqlhh.png",
+	  4 : "http://res.cloudinary.com/dhorsi7vf/image/upload/c_scale,w_120/v1473787875/pin_khhxpw.png",
+	  5 : "http://res.cloudinary.com/dhorsi7vf/image/upload/c_scale,w_120/v1473787866/pig_ng6mng.png",
+	  6 : "http://res.cloudinary.com/dhorsi7vf/image/upload/c_scale,w_120/v1473787859/pen_bjzais.png",
+	  7 : "http://res.cloudinary.com/dhorsi7vf/image/upload/c_scale,w_120/v1473787851/pan_m6bqnr.png",
+	  8 : "http://res.cloudinary.com/dhorsi7vf/image/upload/c_scale,w_120/v1473787847/kiss_bw5zdg.png",
+	  9 : "http://res.cloudinary.com/dhorsi7vf/image/upload/c_scale,w_120/v1473787842/jet_b3oi7f.png",
+	  10 : "http://res.cloudinary.com/dhorsi7vf/image/upload/c_scale,w_120/v1473787831/jam_z1xeu6.png",
+	  11 : "http://res.cloudinary.com/dhorsi7vf/image/upload/c_scale,w_120/v1473787824/gum_kgfg05.png",
+	  12 : "http://res.cloudinary.com/dhorsi7vf/image/upload/c_scale,w_120/v1473787819/doll_jkfzi9.png",
+	  13 : "http://res.cloudinary.com/dhorsi7vf/image/upload/c_scale,w_120/v1473787814/dog_gsi7o1.png",
+	  14 : "http://res.cloudinary.com/dhorsi7vf/image/upload/c_scale,w_120/v1473787809/dad_nulvor.png",
+	  15 : "http://res.cloudinary.com/dhorsi7vf/image/upload/c_scale,w_120/v1473787805/cat_i37i9c.png",
+	  16 : "http://res.cloudinary.com/dhorsi7vf/image/upload/c_scale,w_120/v1473787802/can_jkiswi.png",
+	  17 : "http://res.cloudinary.com/dhorsi7vf/image/upload/c_scale,w_120/v1473787798/bus_q5ec9n.png",
+	  18 : "http://res.cloudinary.com/dhorsi7vf/image/upload/c_scale,w_120/v1473787792/bun_ner2bk.png",
+	  19 : "http://res.cloudinary.com/dhorsi7vf/image/upload/c_scale,w_120/v1473787788/bug_whwt6q.png",
+	  20 : "http://res.cloudinary.com/dhorsi7vf/image/upload/c_scale,w_120/v1473787781/bib_iybuod.png",
+	  21 : "http://res.cloudinary.com/dhorsi7vf/image/upload/c_scale,w_120/v1473787776/bell_qlqqvk.png",
+	  22 : "http://res.cloudinary.com/dhorsi7vf/image/upload/c_scale,w_120/v1473787771/bed_rv8tpq.png",
+	  23 : "http://res.cloudinary.com/dhorsi7vf/image/upload/c_scale,w_120/v1473787761/bat_hruwfm.png",
+	  24 : "http://res.cloudinary.com/dhorsi7vf/image/upload/c_scale,w_120/v1473787751/bag_xe72lg.png",
+	  25 : "http://res.cloudinary.com/dhorsi7vf/image/upload/c_scale,w_120/v1473788625/sub_seg5mm.png"
 	};
 
 	module.exports = answers;

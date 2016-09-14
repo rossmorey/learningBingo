@@ -1,20 +1,24 @@
-div, ul, li {
-  border: 0;
+div, ul, li, header, body, img {
+  border: none;
+  outline: none;
   margin: 0;
   padding: 0;
   font: inherit;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 300;
 }
 
 .bingo {
-  width:350px;
+  width: 500px;
+  margin: 0 auto;
+  padding-bottom: 20px;
 }
 
 li {
   list-style: none;
-  padding: 20px;
-  width: 20px;
-  height: 20px;
-  border: 1px solid red;
+  padding: 5px;
+  width: 80px;
+  /* height: 100px; */
   /* width: calc(100% * (1/5) - 10px); */
   margin: 2px;
   cursor: pointer;
@@ -25,17 +29,17 @@ ul {
   flex-wrap: wrap;
 }
 
-.token {
-  background: yellow;
-}
-
 .start {
-  border: solid black 1px;
+  /* border: solid black 1px; */
   padding: 10px;
   width: 50px;
-  background: green;
+  background: #f1af1c;
   color: white;
   cursor: pointer;
+  text-align: center;
+  border-radius: 7px;
+  font-size: 18px;
+  margin: 20px auto;
 }
 
 .token, .noclick {
@@ -54,6 +58,116 @@ ul {
   top:0;
 }
 
+img {
+  width: 100%;
+  border-radius: 20px;
+}
+
+
+.title {
+  text-align: center;
+  font-size: 30px;
+  font-weight: 500;
+  color: white;
+}
+
+.question {
+  text-align: center;
+}
+
+.message-box {
+  width: 400px;
+  justify-content: center;
+  display: flex;
+  margin: 0 auto;
+  margin-bottom: 12px;
+  color: #dd6d45;
+}
+
+.button-box {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  margin-top: 20px;
+}
+
+.pass, .restart {
+  padding: 10px 20px;
+  border-radius: 10px;
+  color: white;
+  margin: 15px;
+  cursor: pointer;
+}
+
+body {
+  background: #c6e86e;
+}
+
+
+.title {
+  margin-top: 20px;
+}
+
+.pass {
+  background-color: #086d94;
+}
+
+.restart {
+  background: #d06640;
+}
+
+.congrats {
+  font-size: 40px;
+  font-weight: 500;
+  color: white;
+}
+
+.modal {
+  display: flex;
+  justify-content: center;;
+}
+
+
+.replay {
+  padding: 10px;
+  width: 150px;
+  background: #86b538;
+  color: white;
+  cursor: pointer;
+  text-align: center;
+  border-radius: 7px;
+  font-size: 18px;
+  margin: 20px auto;
+}
+
 .invisible {
   display: none;
+}
+
+
+.copyright {
+  text-align: center;
+  font-size: 12px;
+  color: #86a92d;
+  margin-top: 20px;
+}
+
+li:hover {
+  width: 90px;
+  padding: 0px;
+}
+
+
+.replay:hover {box-shadow: rgba(0, 0, 0, 0.4);}
+
+.replay:hover {
+  box-shadow: 0px 0px 10px rgba(0,0,0,.2);
+}
+
+.start:hover {
+  box-shadow: 0px 0px 10px rgba(0,0,0,.2);
+}
+
+.restart:hover, .pass:hover {
+  box-shadow: 0px 0px 10px rgba(0,0,0,.2);
 }
