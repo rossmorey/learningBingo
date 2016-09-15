@@ -9,7 +9,7 @@ div, ul, li, header, body, img {
 }
 
 .bingo {
-  width: 500px;
+  width: 470px;
   margin: 0 auto;
   padding-bottom: 20px;
 }
@@ -68,7 +68,7 @@ img {
 
 .title {
   text-align: center;
-  font-size: 30px;
+  font-size: 35px;
   font-weight: 500;
   color: white;
 }
@@ -226,4 +226,45 @@ te {}
 .audio-reminder {
   text-align: center;
   color: white;
+}
+
+
+.github {
+  background-image: url(http://res.cloudinary.com/dhorsi7vf/image/upload/v1473952746/github-green_qisanj.png);
+  width: 50px;
+  height: 50px;
+  background-size: cover;
+  opacity: .5;
+}
+
+.github:hover {
+  background-image: url(http://res.cloudinary.com/dhorsi7vf/image/upload/v1473949473/github-white_h6hqc1.png);
+  opacity: .9;
+}
+
+.www {
+  background-image: url(http://res.cloudinary.com/dhorsi7vf/image/upload/v1473954464/wwwGreen_xvnr16.png);
+  width: 50px;
+  height: 50px;
+  background-size: cover;
+  opacity: .5;
+}
+
+.www:hover {
+  background-image: url(http://res.cloudinary.com/dhorsi7vf/image/upload/v1473954464/wwwWhite_npub75.png);
+  opacity: .9;
+}
+
+.nav {
+  display: flex;
+  justify-content: center;
+  margin: 15px;
+}
+
+.nav div {
+  margin: 0 10px;
+}
+
+.button-box div:hover {
+  box-shadow: 0 0 10px rgba(0,0,0,.5);
 }

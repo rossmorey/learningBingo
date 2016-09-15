@@ -63,8 +63,6 @@
 	class BingoGame {
 	  constructor(questions, answers) {
 	    this.shuffledAnswers = this.shuffledAs(answers);
-	      // [{key: #, answer: "answer"}]
-	        // .shuffledAnswers[tileIdx].answer
 	    this.shuffledQuestions = this.shuffledQs(questions);
 	    this.currentQuestionIndex = 0;
 	    this.currentQuestion = () => (
@@ -101,14 +99,15 @@
 
 	  shuffledQs(questions) {
 	    let result = [];
-	    for (var questionNum in questions) {
-	      if (questions.hasOwnProperty(questionNum)) {
-	        result.push({
-	          key: parseInt(questionNum),
-	          question: questions[questionNum]
-	        });
-	      }
+
+	    for (var i = 1; i <= 25; i++) {
+	      result.push({
+	        key: i,
+	        question: questions[i]
+	      });
 	    }
+
+	    this.shuffle(result);
 	    return result;
 	  }
 
@@ -276,6 +275,25 @@
 	      "Bay Tree Learing Inc. &copy; 2016<br />All rights reserved."
 	    );
 
+	    let $github = $('<div class="github">');
+	    let $www = $('<div class="www">');
+
+	    this.$el.on(
+	      "click",
+	      ".www",
+	      this.clickWww.bind(this)
+	    );
+
+	    this.$el.on(
+	      "click",
+	      ".github",
+	      this.clickGithub.bind(this)
+	    );
+
+	    let $navContainer = $('<div class="nav">').append(
+	      $github, $www
+	    );
+
 	    let $modal = $('<div class="modal">');
 
 	    let $start = $('<div class="start">').text("Start");
@@ -284,7 +302,16 @@
 	    );
 	    $modal.append($directions, $audioReminder, $start);
 
-	    this.$el.append($audioQuestion, $title, $board, $messageBox, $buttonBox, $copyright, $modal);
+	    this.$el.append(
+	      $audioQuestion,
+	      $title,
+	      $board,
+	      $messageBox,
+	      $buttonBox,
+	      $copyright,
+	      $navContainer,
+	      $modal
+	    );
 	  }
 
 	  clickStart() {
@@ -295,6 +322,14 @@
 	    );
 
 	    this.render();
+	  }
+
+	  clickGithub() {
+	    window.location.href = "https://github.com/rossmorey/learningBingo";
+	  }
+
+	  clickWww() {
+	    window.location.href = "http://www.rossmorey.com/";
 	  }
 
 	  restart() {

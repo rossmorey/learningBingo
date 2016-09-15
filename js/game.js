@@ -1,8 +1,6 @@
 class BingoGame {
   constructor(questions, answers) {
     this.shuffledAnswers = this.shuffledAs(answers);
-      // [{key: #, answer: "answer"}]
-        // .shuffledAnswers[tileIdx].answer
     this.shuffledQuestions = this.shuffledQs(questions);
     this.currentQuestionIndex = 0;
     this.currentQuestion = () => (
@@ -39,14 +37,15 @@ class BingoGame {
 
   shuffledQs(questions) {
     let result = [];
-    for (var questionNum in questions) {
-      if (questions.hasOwnProperty(questionNum)) {
-        result.push({
-          key: parseInt(questionNum),
-          question: questions[questionNum]
-        });
-      }
+
+    for (var i = 1; i <= 25; i++) {
+      result.push({
+        key: i,
+        question: questions[i]
+      });
     }
+
+    this.shuffle(result);
     return result;
   }
 

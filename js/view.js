@@ -69,6 +69,25 @@ class BingoView {
       "Bay Tree Learing Inc. &copy; 2016<br />All rights reserved."
     );
 
+    let $github = $('<div class="github">');
+    let $www = $('<div class="www">');
+
+    this.$el.on(
+      "click",
+      ".www",
+      this.clickWww.bind(this)
+    );
+
+    this.$el.on(
+      "click",
+      ".github",
+      this.clickGithub.bind(this)
+    );
+
+    let $navContainer = $('<div class="nav">').append(
+      $github, $www
+    );
+
     let $modal = $('<div class="modal">');
 
     let $start = $('<div class="start">').text("Start");
@@ -77,7 +96,16 @@ class BingoView {
     );
     $modal.append($directions, $audioReminder, $start);
 
-    this.$el.append($audioQuestion, $title, $board, $messageBox, $buttonBox, $copyright, $modal);
+    this.$el.append(
+      $audioQuestion,
+      $title,
+      $board,
+      $messageBox,
+      $buttonBox,
+      $copyright,
+      $navContainer,
+      $modal
+    );
   }
 
   clickStart() {
@@ -88,6 +116,14 @@ class BingoView {
     );
 
     this.render();
+  }
+
+  clickGithub() {
+    window.location.href = "https://github.com/rossmorey/learningBingo";
+  }
+
+  clickWww() {
+    window.location.href = "http://www.rossmorey.com/";
   }
 
   restart() {
