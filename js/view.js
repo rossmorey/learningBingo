@@ -34,7 +34,7 @@ class BingoView {
       $start
     );
 
-    let $title = $('<div class="title" />').text("Blending Bingo");
+    let $title = $('<div class="title" />').text("Blending Bingo!");
 
     let $board = $('<ul>');
     let $tile, $image;

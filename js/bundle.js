@@ -228,7 +228,7 @@
 
 	      var $modal = $('<div class="modal">').append($directions, $audioReminder, $start);
 
-	      var $title = $('<div class="title" />').text("Blending Bingo");
+	      var $title = $('<div class="title" />').text("Blending Bingo!");
 
 	      var $board = $('<ul>');
 	      var $tile = void 0,

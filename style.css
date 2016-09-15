@@ -28,9 +28,11 @@ img {
 .title {
   text-align: center;
   font-size: 35px;
-  font-weight: 500;
-  color: white;
+  font-weight: 600;
+  color: #ffffff;
   margin: 20px 0;
+  font-family: 'Gravitas One', cursive;
+  text-shadow: 2px 2px #87b738;
 }
 
 
@@ -117,7 +119,7 @@ li.noclick, li.token {
 }
 
 .github {
-  background-image: url(http://res.cloudinary.com/dhorsi7vf/image/upload/v1473952746/github-green_qisanj.png);
+  background-image: url(https://res.cloudinary.com/dhorsi7vf/image/upload/v1473952746/github-green_qisanj.png);
   width: 50px;
   height: 50px;
   background-size: cover;
@@ -125,12 +127,12 @@ li.noclick, li.token {
 }
 
 .github:hover {
-  background-image: url(http://res.cloudinary.com/dhorsi7vf/image/upload/v1473949473/github-white_h6hqc1.png);
+  background-image: url(https://res.cloudinary.com/dhorsi7vf/image/upload/v1473949473/github-white_h6hqc1.png);
   opacity: .9;
 }
 
 .www {
-  background-image: url(http://res.cloudinary.com/dhorsi7vf/image/upload/v1473954464/wwwGreen_xvnr16.png);
+  background-image: url(https://res.cloudinary.com/dhorsi7vf/image/upload/v1473954464/wwwGreen_xvnr16.png);
   width: 50px;
   height: 50px;
   background-size: cover;
@@ -138,7 +140,7 @@ li.noclick, li.token {
 }
 
 .www:hover {
-  background-image: url(http://res.cloudinary.com/dhorsi7vf/image/upload/v1473954464/wwwWhite_npub75.png);
+  background-image: url(https://res.cloudinary.com/dhorsi7vf/image/upload/v1473954464/wwwWhite_npub75.png);
   opacity: .9;
 }
 
