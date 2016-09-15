@@ -360,7 +360,7 @@
 	        image = $(current).children()[0];
 	        $(image).attr(
 	          "src",
-	          "http://res.cloudinary.com/dhorsi7vf/image/upload/c_scale,w_120/v1473790535/back_g11vin.png"
+	          "https://res.cloudinary.com/dhorsi7vf/image/upload/c_scale,w_120/v1473790535/back_g11vin.png"
 	        );
 	      } else {
 	        $(current).addClass("tokenless");
