@@ -235,7 +235,7 @@
 	    );
 
 	    let $copyright = $('<div class="copyright">').html(
-	      "Bay Tree Learing Inc. &copy; 2016<br />All rights reserved."
+	      "Bay Tree Learning Inc. &copy; 2016<br />All rights reserved."
 	    );
 
 	    let $github = $('<div class="github">');

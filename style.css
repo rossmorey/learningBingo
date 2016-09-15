@@ -100,6 +100,10 @@ li.noclick, li.token {
   margin: 20px auto;
 }
 
+.start:hover {
+  box-shadow: 0 0 10px rgba(255, 255, 255, .5);
+}
+
 
 /* Nav Buttons */
 .nav {
