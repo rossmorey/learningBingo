@@ -2,19 +2,82 @@ class BingoView {
   constructor($el, game) {
     this.$el = $el;
     this.game = game;
+    this.won = false;
+    this.setupBoard();
 
     this.$el.on(
       "click",
-      ".start",
+      ".modal",
       this.clickStart.bind(this)
     );
-
-    this.setupBoard();
-    this.won = false;
   }
 
-  playAudio() {
-    $('audio').trigger("play");
+  setupBoard() {
+    this.$el.empty();
+
+    let $title = $('<div class="title" />').text("Blending Bingo");
+    let $directions = $('<div class="directions" />').text(
+      "Can you turn over five cards in a row?"
+    );
+
+    let $messageBox = $('<div class="message-box">');
+
+    let $audioQuestion = $('<audio class="audio-question">');
+
+    this.$el.on(
+      "click",
+      ".replay",
+      this.playAudio.bind(this)
+    );
+
+    let $board = $('<ul>');
+    let $tile, $image;
+
+    for (var tileIdx = 0; tileIdx < 25; tileIdx++) {
+      $tile = $('<li>');
+      $tile.addClass("tokenless noclick");
+      $image = $('<img>').attr(
+        "src",
+        this.game.shuffledAnswers[tileIdx].answer
+      );
+      $tile.append($image);
+
+      $board.append($tile);
+    }
+
+    let $buttonBox = $('<div class="button-box invisible">');
+
+    let $pass = $('<div class="pass">').text('Pass');
+    let $replay = $('<div class="replay invisible">').text('Repeat Question');
+    let $restart = $('<div class="restart">').text('Restart');
+
+    $buttonBox.append($pass, $replay, $restart);
+
+    this.$el.on(
+      "click",
+      ".restart",
+      this.restart.bind(this)
+    );
+
+    this.$el.on(
+      "click",
+      ".pass",
+      this.clickPass.bind(this)
+    );
+
+    let $copyright = $('<div class="copyright">').html(
+      "Bay Tree Learing Inc. &copy; 2016<br />All rights reserved."
+    );
+
+    let $modal = $('<div class="modal">');
+
+    let $start = $('<div class="start">').text("Start");
+    let $audioReminder = $('<div class="audio-reminder">').text(
+      "(Make sure your sound is turned on.)"
+    );
+    $modal.append($directions, $audioReminder, $start);
+
+    this.$el.append($audioQuestion, $title, $board, $messageBox, $buttonBox, $copyright, $modal);
   }
 
   clickStart() {
@@ -29,6 +92,10 @@ class BingoView {
 
   restart() {
     location.reload();
+  }
+
+  playAudio() {
+    $('audio').trigger("play");
   }
 
   clickPass() {
@@ -68,76 +135,14 @@ class BingoView {
       }
       this.render();
     }
-
-  }
-
-  setupBoard() {
-    this.$el.empty();
-
-    let $title = $('<div class="title" />');
-    $title.text("Blending Bingo");
-
-    let $messageBox = $('<div class="message-box">');
-    let $start = $('<div class="start">');
-    $start.text("Start");
-
-    let $question = $('<div class="question">');
-    let $audioQuestion = $('<audio class="audio-question">');
-    let $replay = $('<div class="replay invisible">').text('Replay Question');
-
-    this.$el.on(
-      "click",
-      ".replay",
-      this.playAudio.bind(this)
-    );
-
-    let $board = $('<ul>');
-    let $tile, $image;
-
-    for (var tileIdx = 0; tileIdx < 25; tileIdx++) {
-      $tile = $('<li>');
-      $tile.addClass("tokenless noclick");
-      $image = $('<img>').attr(
-        "src",
-        this.game.shuffledAnswers[tileIdx].answer
-      );
-      $tile.append($image);
-
-      $board.append($tile);
-    }
-
-    let $buttonBox = $('<div class="button-box invisible">');
-
-    let $restart = $('<div class="restart">').text('Restart');
-    let $pass = $('<div class="pass">').text('Pass');
-
-    $buttonBox.append($pass, $restart);
-
-    this.$el.on(
-      "click",
-      ".restart",
-      this.restart.bind(this)
-    );
-
-    this.$el.on(
-      "click",
-      ".pass",
-      this.clickPass.bind(this)
-    );
-
-    let $copyright = $('<div class="copyright">').html(
-      "Bay Tree Learing Inc. &copy; 2016<br />All rights reserved."
-    );
-
-    this.$el.append($audioQuestion, $title, $start, $replay, $messageBox, $board, $buttonBox, $question, $copyright);
   }
 
   render() {
+    if (!this.won) this.$el.find('.modal').remove();
     this.$el.find('.start').remove();
     this.$el.find('.error').remove();
 
     let $audioQuestion = this.$el.find('audio');
-    // source below should be question audio:
     $audioQuestion.attr('src', this.game.currentQuestion().question);
 
     const $lis = this.$el.find('li');
@@ -159,9 +164,6 @@ class BingoView {
         $(current).addClass("tokenless");
       }
     });
-
-    // const $question = this.$el.find('.question');
-    // $question.text(this.game.currentQuestion().question);
 
     this.$el.find('.button-box').removeClass('invisible');
     this.$el.find('.replay').removeClass('invisible');
