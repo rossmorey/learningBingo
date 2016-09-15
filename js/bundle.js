@@ -138,12 +138,13 @@
 	  isWon() {
 	    let won, segment;
 
-	    for (let i=0; i<=5; i+=5) {
+	    for (let i=0; i<=20; i+=5) {
 	      segment = this.shuffledAnswers.slice(i, i+5);
 
 	      won = segment.every((el) => (
 	        el.key==="token"
 	      ));
+
 	      if (won) return true;
 	    }
 
@@ -216,6 +217,7 @@
 	    );
 
 	    this.setupBoard();
+	    this.won = false;
 	  }
 
 	  playAudio() {
@@ -254,24 +256,26 @@
 	        $messageBox.append($error);
 	      }
 	    } else {
+	      if (this.game.isWon()) {
+	        let $congrats = $('<div class="congrats">').text(
+	          "Congratulations, you won!"
+	        );
+	        let $modal = $('<div class="modal">');
+	        $modal.append($congrats);
+
+	        this.$el.append($modal);
+
+	        this.$el.on(
+	          "click",
+	          ".modal",
+	          this.restart.bind(this)
+	        );
+
+	        this.won = true;
+	      }
 	      this.render();
 	    }
 
-	    if (this.game.isWon()) {
-	      let $congrats = $('<div class="congrats">').text(
-	        "Congratulations, you won!"
-	      );
-	      let $modal = $('<div class="modal">');
-	      $modal.append($congrats);
-
-	      this.$el.append($modal);
-
-	      this.$el.on(
-	        "click",
-	        ".modal",
-	        this.restart.bind(this)
-	      );
-	    }
 	  }
 
 	  setupBoard() {
@@ -363,14 +367,13 @@
 	      }
 	    });
 
-	    const $question = this.$el.find('.question');
-	    $question.text(this.game.currentQuestion().question);
-
-
+	    // const $question = this.$el.find('.question');
+	    // $question.text(this.game.currentQuestion().question);
 
 	    this.$el.find('.button-box').removeClass('invisible');
 	    this.$el.find('.replay').removeClass('invisible');
-	    $audioQuestion.trigger("play");
+
+	    if (!this.won) $audioQuestion.trigger("play");
 	  }
 	}
 
@@ -404,40 +407,12 @@
 	  20 : "http://blendingbingo.s3-us-west-1.amazonaws.com/bib.mp3",
 	  21 : "http://blendingbingo.s3-us-west-1.amazonaws.com/bell.mp3",
 	  22 : "http://blendingbingo.s3-us-west-1.amazonaws.com/bed.mp3",
-	  23 : "http://blendingbingo.s3-us-west-1.amazonaws.com/bag.mp3",
+	  23 : "http://blendingbingo.s3-us-west-1.amazonaws.com/bat.mp3",
 	  24 : "http://blendingbingo.s3-us-west-1.amazonaws.com/bag.mp3",
 	  25 : "http://blendingbingo.s3-us-west-1.amazonaws.com/sub.mp3"
 	};
 
 	module.exports = questions;
-
-	// const questions = {
-	//   1 : "T-O-P",
-	//   2 : "T-E-N",
-	//   3 : "P-O-T",
-	//   4 : "P-I-N",
-	//   5 : "P-I-G",
-	//   6 : "P-E-N",
-	//   7 : "P-A-N",
-	//   8 : "K-I-S-S",
-	//   9 : "J-E-T",
-	//   10 : "J-A-M",
-	//   11 : "G-U-M",
-	//   12 : "D-O-L-L",
-	//   13 : "D-O-G",
-	//   14 : "D-A-D",
-	//   15 : "C-A-T",
-	//   16 : "C-A-N",
-	//   17 : "B-U-S",
-	//   18 : "B-U-N",
-	//   19 : "B-U-G",
-	//   20 : "B-I-B",
-	//   21 : "B-E-L-L",
-	//   22 : "B-E-D",
-	//   23 : "B-A-T",
-	//   24 : "B-A-G",
-	//   25 : "S-U-B"
-	// };
 
 
 /***/ },

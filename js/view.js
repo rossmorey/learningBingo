@@ -10,6 +10,7 @@ class BingoView {
     );
 
     this.setupBoard();
+    this.won = false;
   }
 
   playAudio() {
@@ -48,24 +49,26 @@ class BingoView {
         $messageBox.append($error);
       }
     } else {
+      if (this.game.isWon()) {
+        let $congrats = $('<div class="congrats">').text(
+          "Congratulations, you won!"
+        );
+        let $modal = $('<div class="modal">');
+        $modal.append($congrats);
+
+        this.$el.append($modal);
+
+        this.$el.on(
+          "click",
+          ".modal",
+          this.restart.bind(this)
+        );
+
+        this.won = true;
+      }
       this.render();
     }
 
-    if (this.game.isWon()) {
-      let $congrats = $('<div class="congrats">').text(
-        "Congratulations, you won!"
-      );
-      let $modal = $('<div class="modal">');
-      $modal.append($congrats);
-
-      this.$el.append($modal);
-
-      this.$el.on(
-        "click",
-        ".modal",
-        this.restart.bind(this)
-      );
-    }
   }
 
   setupBoard() {
@@ -157,14 +160,13 @@ class BingoView {
       }
     });
 
-    const $question = this.$el.find('.question');
-    $question.text(this.game.currentQuestion().question);
-
-
+    // const $question = this.$el.find('.question');
+    // $question.text(this.game.currentQuestion().question);
 
     this.$el.find('.button-box').removeClass('invisible');
     this.$el.find('.replay').removeClass('invisible');
-    $audioQuestion.trigger("play");
+
+    if (!this.won) $audioQuestion.trigger("play");
   }
 }
 

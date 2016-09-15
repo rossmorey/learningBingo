@@ -76,12 +76,13 @@ class BingoGame {
   isWon() {
     let won, segment;
 
-    for (let i=0; i<=5; i+=5) {
+    for (let i=0; i<=20; i+=5) {
       segment = this.shuffledAnswers.slice(i, i+5);
 
       won = segment.every((el) => (
         el.key==="token"
       ));
+
       if (won) return true;
     }
 
