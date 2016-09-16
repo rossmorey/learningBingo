@@ -157,8 +157,8 @@
 	      };
 
 	      // checks horizontal rows
-	      for (var i = 0; i <= 20; i += 5) {
-	        segment = this.shuffledAnswers.slice(i, i + 5);
+	      for (var y = 0; y <= 20; y += 5) {
+	        segment = this.shuffledAnswers.slice(y, y + 5);
 	        if (checkSegment()) won = true;
 	      }
 
@@ -338,6 +338,7 @@
 	      $audioQuestion.attr('src', this.game.currentQuestion().question);
 
 	      var $lis = this.$el.find('li');
+	      var cardBack = "https://res.cloudinary.com/dhorsi7vf/image/upload/c_scale,w_120/v1473790535/back_g11vin.png";
 
 	      this.game.shuffledAnswers.forEach(function (answer, answerIdx) {
 	        var current = $lis[answerIdx];
@@ -346,7 +347,7 @@
 	        if (_this.game.shuffledAnswers[answerIdx].key === "token") {
 	          $(current).addClass("token");
 	          var image = $(current).children()[0];
-	          $(image).attr("src", "https://res.cloudinary.com/dhorsi7vf/image/upload/c_scale,w_120/v1473790535/back_g11vin.png");
+	          $(image).attr("src", cardBack);
 	        } else {
 	          $(current).addClass("tokenless");
 	        }

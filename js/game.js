@@ -74,8 +74,8 @@ class BingoGame {
     );
 
     // checks horizontal rows
-    for (let i=0; i<=20; i+=5) {
-      segment = this.shuffledAnswers.slice(i, i+5);
+    for (let y=0; y<=20; y+=5) {
+      segment = this.shuffledAnswers.slice(y, y+5);
       if (checkSegment()) won = true;
     }
 

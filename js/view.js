@@ -183,6 +183,7 @@ class BingoView {
     $audioQuestion.attr('src', this.game.currentQuestion().question);
 
     const $lis = this.$el.find('li');
+    const cardBack = "https://res.cloudinary.com/dhorsi7vf/image/upload/c_scale,w_120/v1473790535/back_g11vin.png"
 
     this.game.shuffledAnswers.forEach((answer, answerIdx) => {
       let current = $lis[answerIdx];
@@ -193,7 +194,7 @@ class BingoView {
         let image = $(current).children()[0];
         $(image).attr(
           "src",
-          "https://res.cloudinary.com/dhorsi7vf/image/upload/c_scale,w_120/v1473790535/back_g11vin.png"
+          cardBack
         );
       } else {
         $(current).addClass("tokenless");
